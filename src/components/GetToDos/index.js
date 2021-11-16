@@ -5,6 +5,10 @@ const BASE_URL = "http://localhost:4000";
 
 const GetToDos = () => {
   const [item, setItem] = useState([]);
+  useEffect(() => {
+    getToDo();
+  }, []);
+
   const getToDo = async () => {
     const list = axios.get(`${BASE_URL}/todos`);
     console.log(item);
