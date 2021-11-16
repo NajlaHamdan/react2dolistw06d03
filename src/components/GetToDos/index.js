@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import axios from "axios";
 const BASE_URL = "http://localhost:4000";
 
 const GetToDos = () => {
@@ -11,43 +12,42 @@ const GetToDos = () => {
   };
   function createItem() {
     const task = prompt("enter new task");
-    axios.post(`${BASE_URL}/createTodo`),
-      {
+    axios
+      .post(`${BASE_URL}/createTodo`, {
         item: task,
-      }
-        .then(function (res) {
-          console.log("created");
-        })
-        .catch(function (err) {
-          console.log(err);
-        });
+      })
+      .then(function (res) {
+        console.log("created");
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
   }
   function updateItem(index) {
     const task = prompt("enter new task");
-    axios.post(`${BASE_URL}/updateItem`),
-      {
+    axios
+      .put(`${BASE_URL}/updateItem`, {
         id: index,
         item: task,
-      }
-        .then(function (res) {
-          console.log("updated");
-        })
-        .catch(function (err) {
-          console.log(err);
-        });
+      })
+      .then(function (res) {
+        console.log("updated");
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
   }
   function deleteItem(index) {
-    const task = prompt("enter new task");
-    axios.post(`${BASE_URL}/deleteItem`),
-      {
+    axios
+      .delete(`${BASE_URL}/deleteItem`, {
         id: index,
-      }
-        .then(function (res) {
-          console.log("deleted");
-        })
-        .catch(function (err) {
-          console.log(err);
-        });
+      })
+      .then(function (res) {
+        console.log("deleted");
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
   }
   return (
     <div>
