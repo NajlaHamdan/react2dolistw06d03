@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import axios from "axios";
 const BASE_URL = "http://localhost:4000";
 
@@ -56,7 +56,8 @@ const GetToDos = () => {
   return (
     <div>
       <ul>
-        {item.map((item, index) => (
+        <>
+        {item.map((item, index) =>(
           <>
             <li key={index}>{item}</li>
             <button
@@ -74,7 +75,7 @@ const GetToDos = () => {
               delete
             </button>
           </>
-        ))}
+        ))}</>
         <button onClick={createItem}></button>
       </ul>
     </div>
